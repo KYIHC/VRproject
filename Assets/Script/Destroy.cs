@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Destroy : MonoBehaviour
 {
-    public float time = 1.0f;
+    public float destroyInterval;
     
     public void Start()
     {
-        Destroy(gameObject, time);
+        destroyInterval = PlayerPrefs.GetFloat("destroyInterval");
+
+        Destroy(gameObject, destroyInterval);
+        
     }    
 
 

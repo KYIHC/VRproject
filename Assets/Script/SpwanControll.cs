@@ -8,11 +8,16 @@ public class SpwanControll : MonoBehaviour
     public GameObject spwanObject;
     public GameObject player;
 
+    public float spwanInterval;
+
+
     public IEnumerator SpwanObject()
     {
+        spwanInterval = PlayerPrefs.GetFloat("spwanInterval");
+
         while (true)
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(spwanInterval);
 
             Vector3 spwanPoint = new Vector3(Random.Range(-8, 2), 0, Random.Range(-11, 11));
 
