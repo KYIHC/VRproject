@@ -4,7 +4,19 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Resource/Scenes/MainLobby.unity
+    guid: 480f93ad373904c4694e5ba8a59d4062
+  - enabled: 1
+    path: Assets/Resource/Scenes/LoadingScene.unity
+    guid: c40faddaffaa57c4a866394094bd7026
+  - enabled: 1
+    path: Assets/Resource/Scenes/BasicGround.unity
+    guid: dd5b5e046dca649418448bde8f44f159
+  - enabled: 1
+    path: Assets/Resource/Scenes/GranadeGround.unity
+    guid: 7f2d8b1a29580064f9f9e94ac6f944c2
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 70bfdf65d7a9b7640aed4dc6a05ec5de, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e09e601ff58567947b76adbf775df565, type: 2}

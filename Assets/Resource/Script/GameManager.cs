@@ -6,16 +6,16 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public Text Score;
-    public Text Enemy;   
+    public Text Enemy;
 
     public int score = 0;
     public int enemy = 20;
 
-    public GameObject startPanel ;
+    public GameObject startPanel;
     public GameObject startCircle;
     public GameObject difficultyPanel;
     public GameObject difficultyCircle;
-    
+
 
     public SpwanControll spwanControll;
 
@@ -23,15 +23,21 @@ public class GameManager : MonoBehaviour
 
     public void Awake()
     {
-        startPanel.SetActive(true);
-        startCircle.SetActive(true);
-        difficultyPanel.SetActive(false);
-        difficultyCircle.SetActive(false);
-        
+        if (startPanel != null &&
+            startCircle != null &&
+            difficultyPanel == null &&
+            difficultyCircle != null)
+        {
+
+            startPanel.SetActive(true);
+            startCircle.SetActive(true);
+            difficultyPanel.SetActive(false);
+            difficultyCircle.SetActive(false);
+        }
 
         if (null == instance)
-        {            
-            instance = this;            
+        {
+            instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
         else Destroy(this.gameObject);
@@ -53,25 +59,26 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Score.text = score.ToString();
-        Enemy.text = enemy.ToString();
+        if (Score != null) { Score.text = score.ToString();}
+        if(Enemy != null) {Enemy.text = enemy.ToString(); }
+        
     }
 
     public void onStartButton()
-    {      
-       startPanel.SetActive(false);
-       startCircle.SetActive(false);
-       difficultyPanel.SetActive(true);
-       difficultyCircle.SetActive(true);
-       
+    {
+        startPanel.SetActive(false);
+        startCircle.SetActive(false);
+        difficultyPanel.SetActive(true);
+        difficultyCircle.SetActive(true);
+
     }
-    
-   
+
+
     public void SeletDifficulty(int Difficulty)
     {
         float spwanInterval = Difficulty == 1 ? 3f : Difficulty == 2 ? 2f : 1f;
         float destroyInterval = Difficulty == 1 ? 5f : Difficulty == 2 ? 4f : 3f;
-        
+
         PlayerPrefs.SetFloat("spwanInterval", spwanInterval);
         PlayerPrefs.SetFloat("destroyInterval", destroyInterval);
 
@@ -79,9 +86,9 @@ public class GameManager : MonoBehaviour
         difficultyCircle.SetActive(false);
 
         spwanControll.StartCoroutine(spwanControll.SpwanObject());
-        
+
     }
-   
+
 
     public void GetScore()
     {
