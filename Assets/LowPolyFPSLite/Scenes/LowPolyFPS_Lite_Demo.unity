@@ -3040,6 +3040,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb843d722babde48891ff8a49c20325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Score: {fileID: 317664335}
+  Enemy: {fileID: 1811381366}
+  score: 0
+  enemy: 20
 --- !u!1001 &934105894
 PrefabInstance:
   m_ObjectHideFlags: 0
