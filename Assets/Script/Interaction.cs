@@ -7,10 +7,6 @@ public class Interaction : MonoBehaviour
 {
     public LayerMask targetLayer;
 
-    public GameObject bullet;
-
-
-
     private void OnTriggerEnter(Collider other)
     {
         GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -19,10 +15,6 @@ public class Interaction : MonoBehaviour
         {
 
             Destroy(gameObject);
-
-            Destroy(other);
-
-
             gameManager.GetScore();
             gameManager.MinusEnemy();
 
