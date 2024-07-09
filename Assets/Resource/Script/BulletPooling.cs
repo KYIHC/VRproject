@@ -7,7 +7,7 @@ using UnityEngine;
 public class BulletPooling : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public int poolCount = 70;
+    public int poolCount = 100;
 
     public Queue<Bullet> bulletPool = new Queue<Bullet>();
     public static BulletPooling Instance;
@@ -52,7 +52,7 @@ public class BulletPooling : MonoBehaviour
         }
     }
 
-    public static void ReturnObject(Bullet bullet)
+    public void ReturnObject(Bullet bullet)
     {
         bullet.gameObject.SetActive(false);
         bullet.transform.SetParent(Instance.transform);
