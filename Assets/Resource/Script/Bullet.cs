@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     public void DestroyBullet()
     {
         BulletPooling.Instance.ReturnObject(this);
+       this.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
     private void OnTriggerEnter(Collider other)

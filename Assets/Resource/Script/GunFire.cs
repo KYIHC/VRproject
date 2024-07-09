@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GunFire : MonoBehaviour
 {
@@ -11,12 +12,14 @@ public class GunFire : MonoBehaviour
     public Transform shootPoint;
     public float bulletSpeed = 1000;
     public ParticleSystem muzzleFlash;
+    public InputActionReference bButton; 
     #endregion
 
     #region private º¯¼ö
     private Animator anim;
     private bool isShooting = false;
-    private float bulletCount = 100;
+    private float bulletCount = 75;
+    Coroutine shooting;
     #endregion
     private void Awake()
     {
@@ -27,24 +30,23 @@ public class GunFire : MonoBehaviour
     {
         if (isShooting == false)
         {
-            anim.SetBool("Shoot", true);
             muzzleFlash.Play();
-            StartCoroutine(ShootBullet());
+            anim.SetBool("Shoot", true);
+            shooting = StartCoroutine(ShootBullet());
         }
     }
 
     public void StopShoot()
     {
-        StopAllCoroutines();
+        StopCoroutine(shooting);
         anim.SetBool("Shoot", false);
         muzzleFlash.Stop();
     }
 
     IEnumerator ShootBullet()
     {
-        while (bulletCount > 0 && isShooting == false)
+        while (bulletCount >0)
         {
-            bulletCount--;
             var bullet = BulletPooling.GetBullet();
             bullet.Invoke("DestroyBullet", 4f);
             if (bullet.TryGetComponent(out Rigidbody rigidBody))
@@ -52,25 +54,33 @@ public class GunFire : MonoBehaviour
                 bullet.transform.position = shootPoint.position;
                 bullet.transform.rotation = shootPoint.rotation;
                 rigidBody.AddForce(shootPoint.forward * bulletSpeed);
+                bulletCount--;
                 yield return new WaitForSeconds(shootClip.length);
             }
+         
         }
-        if (bulletCount == 0)
-        {
-            StartCoroutine(RelaodDelay());
-            yield return new WaitForSeconds(reloadClip.length);
-            isShooting = false;
-            bulletCount = 100;
-            yield break;
-        }
+        Debug.Log("Out of Bullet");
+        StartCoroutine(RelaodDelay());
     }
+
     IEnumerator RelaodDelay()
     {
+        Debug.Log("Reloading" + reloadClip.length);
         muzzleFlash.Stop();
         isShooting = true;
         anim.SetBool("Shoot", false);
         anim.SetTrigger("Reload");
-        yield return new WaitForSeconds(reloadClip.length);
+        yield return new WaitForSeconds(reloadClip.length*2);
+        isShooting = false;
+        bulletCount = 75;
+        Debug.Log("Reload Complete");
+        
+        yield return null;
+    }
 
+    public void Reload(bool isPush)
+    {
+        if(isPush && bulletCount < 75)
+        StartCoroutine(RelaodDelay());
     }
 }
