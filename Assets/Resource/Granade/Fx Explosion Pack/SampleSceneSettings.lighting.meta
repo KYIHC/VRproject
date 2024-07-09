@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Resource/Granade/Fx Explosion Pack/SampleSceneSettings.lighting.meta
 guid: 843cb3f5a14cace4da63719d7f3636e5
+=======
+guid: bd109331cf92b334cb1ee3d53ca4dc87
+>>>>>>> Stashed changes:Assets/Fx Explosion Pack/SampleSceneSettings.lighting.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 4890085278179872738
