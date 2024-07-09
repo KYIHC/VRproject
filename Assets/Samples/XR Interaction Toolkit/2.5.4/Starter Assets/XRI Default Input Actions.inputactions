@@ -781,6 +781,7 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+<<<<<<< Updated upstream
                 },
                 {
                     "name": "GrenadeButtonL",
@@ -799,6 +800,8 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+=======
+>>>>>>> Stashed changes
                 }
             ],
             "bindings": [
@@ -966,6 +969,7 @@
                     "action": "Scale Delta",
                     "isComposite": false,
                     "isPartOfComposite": false
+<<<<<<< Updated upstream
                 },
                 {
                     "name": "",
@@ -988,6 +992,8 @@
                     "action": "PrimaryButton",
                     "isComposite": false,
                     "isPartOfComposite": false
+=======
+>>>>>>> Stashed changes
                 }
             ]
         },
@@ -1617,6 +1623,7 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+<<<<<<< Updated upstream
                 },
                 {
                     "name": "GrenadeButtonR",
@@ -1635,6 +1642,8 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+=======
+>>>>>>> Stashed changes
                 }
             ],
             "bindings": [
@@ -1802,6 +1811,7 @@
                     "action": "Scale Delta",
                     "isComposite": false,
                     "isPartOfComposite": false
+<<<<<<< Updated upstream
                 },
                 {
                     "name": "",
@@ -1824,6 +1834,8 @@
                     "action": "PrimaryButton",
                     "isComposite": false,
                     "isPartOfComposite": false
+=======
+>>>>>>> Stashed changes
                 }
             ]
         },
