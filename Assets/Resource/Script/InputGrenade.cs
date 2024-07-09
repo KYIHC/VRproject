@@ -5,17 +5,24 @@ using UnityEngine.InputSystem;
 
 public class InputGrenade : MonoBehaviour
 {
-    public GameObject grenade;
+    Grenade gren;
+    
+    
 
-    public void GrenadeButtonRActivate(InputAction.CallbackContext context)
+    private void Start()
     {
-        
-        Debug.Log("gren");
-       /* if(gameObject.name=="Grenade")
-        {
-            grenade.GetComponent<Rigidbody>().AddForce(transform.forward * 10f ,ForceMode.Impulse);
-        }*/
-
-
+        gren = GetComponent<Grenade>();
     }
+
+    public void grenShot()
+    {
+        StartCoroutine(grenThrow());
+        
+    }
+    IEnumerator grenThrow()
+    {
+        yield return new WaitForSeconds(0f);
+        gren.GetComponent<Rigidbody>().AddForce(transform.forward * 10f, ForceMode.Impulse);
+    }
+    
 }

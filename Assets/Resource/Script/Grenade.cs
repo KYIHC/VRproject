@@ -1,4 +1,4 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,35 +7,39 @@ public class Grenade : MonoBehaviour
     public GameObject particle;
 
     public float explosionRadius = 5f;
-    public float explosionTime=5f;
+    public float explosionTime = 5f;
     AudioSource audioSource;
     public AudioClip exSound;
-    
+    InputGrenade inputgrenade;
+
 
 
     private bool isExplosion = false;
 
-   
+
 
 
 
     public void isGren()
     {
-        if(isExplosion)
+        inputgrenade = GetComponent<InputGrenade>();
+        inputgrenade.grenShot();
+
+        if (isExplosion)
         {
             return;
         }
         isExplosion = true;
-
-        Invoke("Bomb", explosionTime);
         
+        Invoke("Bomb", explosionTime);
+
     }
     private void Bomb()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
-        foreach(Collider obj in colliders)
+        foreach (Collider obj in colliders)
         {
-            if (obj.gameObject.tag=="soldier")
+            if (obj.gameObject.tag == "soldier")
             {
                 audioSource = GetComponent<AudioSource>();
                 obj.GetComponent<Rigidbody>().AddExplosionForce(300f, transform.position, explosionRadius, 20f);
@@ -44,8 +48,8 @@ public class Grenade : MonoBehaviour
 
                 Destroy(ExplosionParticle, 1f);
                 Destroy(obj.gameObject, 0.5f);
-                
-                
+
+
             }
             else
             {
@@ -57,16 +61,16 @@ public class Grenade : MonoBehaviour
             }
         }
 
-        
 
 
 
 
-        Destroy(gameObject,1.5f);
+
+        Destroy(gameObject, 1.5f);
 
     }
-    
-    
+
+
 
 
 }

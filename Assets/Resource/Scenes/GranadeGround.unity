@@ -8953,6 +8953,7 @@ GameObject:
   - component: {fileID: 7443022817204737905}
   - component: {fileID: 3013150709285509071}
   - component: {fileID: 8466213314668323204}
+  - component: {fileID: 8466213314668323205}
   m_Layer: 0
   m_Name: Right Controller
   m_TagString: Untagged
@@ -10805,15 +10806,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4753607774686056651}
-  m_LocalRotation: {x: -0, y: -0, z: -4.656613e-10, w: 1}
-  m_LocalPosition: {x: 4.318158, y: 1.188, z: -4.271}
+  m_LocalRotation: {x: -0, y: -0.9626115, z: -0, w: 0.2708859}
+  m_LocalPosition: {x: 4.3144784, y: 1.188, z: -4.283843}
   m_LocalScale: {x: 0.8, y: 0.79999995, z: 0.79999995}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 94348561}
   m_Father: {fileID: 0}
   m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -148.566, z: 0}
 --- !u!114 &4593778784056853892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10861,6 +10862,8 @@ GameObject:
   - component: {fileID: 8048929167523999393}
   - component: {fileID: 8048929167523999394}
   - component: {fileID: 8048929167523999395}
+  - component: {fileID: 8048929167523999396}
+  - component: {fileID: 8048929167523999397}
   m_Layer: 0
   m_Name: Grenade
   m_TagString: Untagged
@@ -11745,6 +11748,9 @@ MonoBehaviour:
       m_Calls: []
   m_FirstSelectEntered:
     m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8048929167523999394}
         m_TargetAssemblyTypeName: Grenade, Assembly-CSharp
@@ -11758,9 +11764,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_LastSelectExited:
-    m_PersistentCalls:
-      m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -12845,6 +12848,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8048929167523999396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4753607774686056651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be57006edeef0b478abce70aa06bc56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8048929167523999397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4753607774686056651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be57006edeef0b478abce70aa06bc56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8099559176485381636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12991,6 +13018,22 @@ MonoBehaviour:
   - groupMember: {fileID: 3776392309506777729}
     overrideGroupMembers:
     - {fileID: 8805946559671972847}
+--- !u!114 &8466213314668323205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3013150709285509067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c66e9c39dcc84a4f806b37c78a484b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exButton: {fileID: -5347175929147228409, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  gren: {fileID: 8048929167523999396}
+  isGreb: 0
+  grebButton: {fileID: 0}
 --- !u!114 &8721945526054882058
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class XRCustumCotroller : MonoBehaviour
 {
     public InputActionReference bButton;
     public GunFire gunFire;
+    
 
     private IEnumerator Start()
     {
@@ -17,6 +18,8 @@ public class XRCustumCotroller : MonoBehaviour
         {
             gunFire.Reload(ctx.performed);
         };
+        
+
      
     }
 
