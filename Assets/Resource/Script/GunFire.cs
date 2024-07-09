@@ -31,23 +31,6 @@ public class GunFire : MonoBehaviour
             muzzleFlash.Play();
             StartCoroutine(ShootBullet());
         }
-<<<<<<< Updated upstream:Assets/Resource/Script/GunFire.cs
-        else
-=======
-
-    }
-    public void BulletCount()
-    {
-        bulletCount--;
-
-        Vector3 direction = shootPoint.forward * bulletSpeed;
-        var bullet = BulletPooling.GetBullet();
-        bullet.Shoot(direction);   
-        if (bulletCount == 0)
->>>>>>> Stashed changes:Assets/Script/GunFire.cs
-        {
-         Debug.Log("재장전 중입니다.");
-        }
     }
 
     public void StopShoot()
@@ -88,6 +71,6 @@ public class GunFire : MonoBehaviour
         anim.SetBool("Shoot", false);
         anim.SetTrigger("Reload");
         yield return new WaitForSeconds(reloadClip.length);
-     
+
     }
 }
