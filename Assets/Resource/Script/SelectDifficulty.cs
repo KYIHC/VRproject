@@ -31,7 +31,7 @@ public class SelectDifficulty : MonoBehaviour
             int difficulty = gameObject.name == "easy" ? 1 :
                             gameObject.name == "normal" ? 2 :
                             3;
-            GameManager.Instance.SeletDifficulty(difficulty);
+            GameManager.Instance.SelectDifficulty(difficulty);
         }
     }
 }
