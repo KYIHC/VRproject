@@ -99,4 +99,8 @@ public class GameManager : MonoBehaviour
     {
         enemy--;
     }
+    public int CountEnemy()
+    {
+        return enemy;
+    }
 }

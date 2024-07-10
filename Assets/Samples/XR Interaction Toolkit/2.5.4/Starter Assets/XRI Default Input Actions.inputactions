@@ -1635,15 +1635,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "ExButton",
-                    "type": "Button",
-                    "id": "cc1af567-19f2-4adc-93ac-367638e659ba",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1831,17 +1822,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "PrimaryButton",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1ea77501-e9c7-4f3a-86d5-a4bd62fa13fc",
-                    "path": "<XRController>{RightHand}/{SecondaryButton}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ExButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

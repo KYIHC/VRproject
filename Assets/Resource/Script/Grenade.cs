@@ -6,7 +6,7 @@ public class Grenade : MonoBehaviour
 {
     public GameObject particle;
 
-    public float explosionRadius = 5f;
+    public float explosionRadius = 3f;
     public float explosionTime = 5f;
     AudioSource audioSource;
     public AudioClip exSound;
@@ -14,9 +14,10 @@ public class Grenade : MonoBehaviour
 
 
 
+
     private bool isExplosion = false;
 
-
+    
 
 
 
@@ -32,6 +33,7 @@ public class Grenade : MonoBehaviour
         isExplosion = true;
         
         Invoke("Bomb", explosionTime);
+        Invoke("activeStage",0f);
 
     }
     private void Bomb()
@@ -47,6 +49,7 @@ public class Grenade : MonoBehaviour
                 audioSource.PlayOneShot(exSound);
 
                 Destroy(ExplosionParticle, 1f);
+                if(obj.gameObject.transform.position!=Vector3.zero)
                 Destroy(obj.gameObject, 0.5f);
 
 
@@ -60,6 +63,7 @@ public class Grenade : MonoBehaviour
                 Destroy(ExplosionParticle, 1f);
             }
         }
+        
 
 
 
@@ -69,6 +73,8 @@ public class Grenade : MonoBehaviour
         Destroy(gameObject, 1.5f);
 
     }
+    
+    
 
 
 
