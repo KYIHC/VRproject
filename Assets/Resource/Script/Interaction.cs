@@ -21,6 +21,10 @@ public class Interaction : MonoBehaviour
 
 
         }
+        if(gameManager.enemy==0)
+        {
+            
+        }
     }
 
 
