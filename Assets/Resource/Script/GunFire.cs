@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class GunFire : MonoBehaviour
 {
@@ -10,16 +12,22 @@ public class GunFire : MonoBehaviour
     public AnimationClip shootClip;
     public AnimationClip reloadClip;
     public Transform shootPoint;
-    public float bulletSpeed = 1000;
     public ParticleSystem muzzleFlash;
-    public InputActionReference bButton; 
+    public InputActionReference bButton;
+
+    public Image bulletImage;
+    public TextMeshProUGUI countUI;
+    public float currentBullet;
+    public float maxBullet;
+    public float bulletSpeed = 1000;
     #endregion
 
     #region private º¯¼ö
     private Animator anim;
     private bool isShooting = false;
-    private float bulletCount = 75;
+    private string count;
     Coroutine shooting;
+    Coroutine pistolShooting;
     #endregion
     private void Awake()
     {
@@ -43,9 +51,43 @@ public class GunFire : MonoBehaviour
         muzzleFlash.Stop();
     }
 
+    public void PistolShoot()
+    {
+        if (isShooting == false)
+        {
+            muzzleFlash.Play();
+            anim.SetTrigger("Shoot");
+            pistolShooting = StartCoroutine(ShootPistol());
+        }
+    }
+    IEnumerator ShootPistol()
+    {
+        var bullet = BulletPooling.GetBullet();
+        bullet.Invoke("DestroyBullet", 4f);
+        if (currentBullet > 0)
+        {
+            if (bullet.TryGetComponent(out Rigidbody rigidBody))
+            {
+                bullet.transform.position = shootPoint.position;
+                bullet.transform.rotation = shootPoint.rotation;
+                rigidBody.AddForce(shootPoint.forward * bulletSpeed);
+                currentBullet--;
+                countUI.text = $"{currentBullet}  /  {maxBullet} ".ToString();
+                isShooting = true;
+                yield return new WaitForSeconds(shootClip.length);
+                isShooting = false;
+                yield return null;
+            }
+        }
+        else
+        {
+            StartCoroutine(RelaodDelay());
+        }
+    }
+
     IEnumerator ShootBullet()
     {
-        while (bulletCount >0)
+        while (currentBullet > 0)
         {
             var bullet = BulletPooling.GetBullet();
             bullet.Invoke("DestroyBullet", 4f);
@@ -54,33 +96,43 @@ public class GunFire : MonoBehaviour
                 bullet.transform.position = shootPoint.position;
                 bullet.transform.rotation = shootPoint.rotation;
                 rigidBody.AddForce(shootPoint.forward * bulletSpeed);
-                bulletCount--;
+                currentBullet--;
+                countUI.text = $"{currentBullet}  /  {maxBullet} ".ToString();
                 yield return new WaitForSeconds(shootClip.length);
             }
-         
+
         }
-        Debug.Log("Out of Bullet");
         StartCoroutine(RelaodDelay());
     }
 
     IEnumerator RelaodDelay()
     {
-        Debug.Log("Reloading" + reloadClip.length);
         muzzleFlash.Stop();
         isShooting = true;
         anim.SetBool("Shoot", false);
         anim.SetTrigger("Reload");
-        yield return new WaitForSeconds(reloadClip.length*2);
+        yield return new WaitForSeconds(reloadClip.length * 2);
         isShooting = false;
-        bulletCount = 75;
-        Debug.Log("Reload Complete");
-        
+        currentBullet = maxBullet;
+        countUI.text = $"{currentBullet}  /  {maxBullet} ".ToString();
         yield return null;
     }
 
     public void Reload(bool isPush)
     {
-        if(isPush && bulletCount < 75)
-        StartCoroutine(RelaodDelay());
+        if (isPush && currentBullet < maxBullet)
+            StartCoroutine(RelaodDelay());
+    }
+
+
+    public void BulletUI()
+    {
+        bulletImage.gameObject.SetActive(true);
+        countUI.text = $"{currentBullet}  /  {maxBullet} ".ToString();
+
+    }
+    public void BulletUIExit()
+    {
+        bulletImage.gameObject.SetActive(false);
     }
 }
