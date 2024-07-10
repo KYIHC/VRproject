@@ -6,10 +6,7 @@ using UnityEngine.InputSystem;
 public class InputGrenade : MonoBehaviour
 {
     Grenade gren;
-    public Transform Controller;
-
-    
-    
+    GameObject controller;
 
     private void Start()
     {
@@ -23,8 +20,17 @@ public class InputGrenade : MonoBehaviour
     }
     IEnumerator grenThrow()
     {
-        yield return new WaitForSeconds(0f);
-        gren.GetComponent<Rigidbody>().AddForce(Controller.transform.forward * 10f, ForceMode.Impulse);
+        yield return null;
+        gren.GetComponent<Rigidbody>().AddForce(controller.transform.forward * 10f, ForceMode.Impulse);
     }
-    
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            controller = other.gameObject;
+        }
+   
+    }
+
 }

@@ -4125,7 +4125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be57006edeef0b478abce70aa06bc56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 3013150709285509066}
 --- !u!82 &815076382
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7124,7 +7123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be57006edeef0b478abce70aa06bc56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 3013150709285509066}
 --- !u!82 &1248880781
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7817,7 +7815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be57006edeef0b478abce70aa06bc56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 3013150709285509066}
 --- !u!82 &1294732795
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9089,7 +9086,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be57006edeef0b478abce70aa06bc56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 3013150709285509066}
 --- !u!82 &1533520588
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9587,7 +9583,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be57006edeef0b478abce70aa06bc56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 3013150709285509066}
 --- !u!82 &1574041890
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11254,7 +11249,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be57006edeef0b478abce70aa06bc56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 3013150709285509066}
 --- !u!82 &1862597047
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12235,7 +12229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be57006edeef0b478abce70aa06bc56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 3013150709285509066}
 --- !u!82 &2019362291
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12785,7 +12778,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be57006edeef0b478abce70aa06bc56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 3013150709285509066}
 --- !u!82 &2057736024
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17274,9 +17266,10 @@ GameObject:
   - component: {fileID: 3013150709285509071}
   - component: {fileID: 8466213314668323204}
   - component: {fileID: 8466213314668323205}
+  - component: {fileID: 8466213314668323206}
   m_Layer: 0
   m_Name: Right Controller
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21116,7 +21109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be57006edeef0b478abce70aa06bc56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 3013150709285509066}
 --- !u!114 &8149011225967823376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21256,6 +21248,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c66e9c39dcc84a4f806b37c78a484b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &8466213314668323206
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3013150709285509067}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.06
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8721945526054882058
 MonoBehaviour:
   m_ObjectHideFlags: 0
