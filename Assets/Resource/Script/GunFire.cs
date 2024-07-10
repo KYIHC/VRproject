@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class GunFire : MonoBehaviour
 {
@@ -10,16 +13,20 @@ public class GunFire : MonoBehaviour
     public AnimationClip shootClip;
     public AnimationClip reloadClip;
     public Transform shootPoint;
-    public float bulletSpeed = 1000;
     public ParticleSystem muzzleFlash;
     public InputActionReference bButton;
-    public float maxBullet = 75;
-    public float currentBullet = 75;
+
+    public TextMeshProUGUI countUI;
+    public Image bulletImage;
+    public float maxBullet;
+    public float currentBullet;
+    public float bulletSpeed = 1000;
     #endregion
 
     #region private º¯¼ö
     private Animator anim;
     private bool isShooting = false;
+    //private string countUI;
     Coroutine shooting;
     #endregion
     private void Awake()
@@ -65,6 +72,8 @@ public class GunFire : MonoBehaviour
                 bullet.transform.rotation = shootPoint.rotation;
                 rigidBody.AddForce(shootPoint.forward * bulletSpeed);
                 currentBullet--;
+                countUI.text = $"{currentBullet}  /  {maxBullet} ".ToString();
+                Debug.Log(countUI);
                 yield return new WaitForSeconds(shootClip.length);
             }
          
@@ -83,6 +92,7 @@ public class GunFire : MonoBehaviour
         yield return new WaitForSeconds(reloadClip.length*2);
         isShooting = false;
         currentBullet = maxBullet;
+        countUI.text = $"{currentBullet}  /  {maxBullet} ".ToString();
         Debug.Log("Reload Complete");
         
         yield return null;
@@ -90,7 +100,7 @@ public class GunFire : MonoBehaviour
 
     public void Reload(bool isPush)
     {
-        if(isPush && currentBullet < 75)
+        if(isPush && currentBullet < maxBullet)
         StartCoroutine(RelaodDelay());
     }
     public void ShootPistol()
@@ -103,10 +113,22 @@ public class GunFire : MonoBehaviour
             bullet.transform.rotation = shootPoint.rotation;
             rigidBody.AddForce(shootPoint.forward * bulletSpeed);
             currentBullet--;
+            countUI.text = $"{currentBullet}  /  {maxBullet} ".ToString();
         }
         if (currentBullet == 0)
         {
             StartCoroutine(RelaodDelay());
         }
+    }
+
+    public void BulletUI()
+    {
+        bulletImage.gameObject.SetActive(true);
+        countUI.text = $"{currentBullet}  /  {maxBullet} ".ToString();
+
+    }
+    public void BulletUIExit()
+    {
+        bulletImage.gameObject.SetActive(false);
     }
 }

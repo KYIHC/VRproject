@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public Text Score;
-    public Text Enemy;
+    public TextMeshProUGUI Score;
+    public TextMeshProUGUI Enemy;
+    
 
     public int score = 0;
     public int enemy = 20;
@@ -53,6 +56,19 @@ public class GameManager : MonoBehaviour
             }
             return instance;
         }
+    }
+    public void ChangeSence(string senceName)
+    {
+        PlayerPrefs.SetString("lastLoadedScene", senceName);
+        SceneManager.LoadScene("LoadingScene");
+
+    }
+    public void QuitGame()
+    {
+
+        Application.Quit();
+        //플레이모드 종료
+
     }
 
 
