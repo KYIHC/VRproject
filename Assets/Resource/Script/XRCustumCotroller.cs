@@ -8,8 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class XRCustumCotroller : MonoBehaviour
 {
     public InputActionReference bButton;
-    public GunFire machineGun;
-    public GunFire pistol;
+    public GunFire gunFire;
     
 
     private IEnumerator Start()
@@ -17,8 +16,7 @@ public class XRCustumCotroller : MonoBehaviour
         yield return new WaitForEndOfFrame();
         bButton.action.performed += delegate(InputAction.CallbackContext ctx)
         {
-            machineGun.Reload(ctx.performed);
-            pistol.Reload(ctx.performed);
+            gunFire.Reload(ctx.performed);
         };
         
 
